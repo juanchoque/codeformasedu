@@ -1,10 +1,18 @@
 package com.codeformas.edu.resources;
 
+import com.codeformas.edu.error.ApiNotfoundException;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/accounttypes")
 public class AccountTypesResource {
+
+    @GetMapping("")
+    public ResponseBody getAllAccountsTypes(){
+        throw new ApiNotfoundException();
+    }
 
 }
