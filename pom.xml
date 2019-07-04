@@ -84,6 +84,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
+			<!--
 			<plugin>
 				<groupId>com.cmeza</groupId>
 				<artifactId>spring-data-generator</artifactId>
@@ -102,7 +103,7 @@
 						<param>org.springframework.data.querydsl.QuerydslPredicateExecutor</param>
 					</additional-extends>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
 		</plugins>
 	</build>
