@@ -1,11 +1,10 @@
 package com.codeformas.edu.managers;
 
 import com.codeformas.edu.error.ApiException;
-import com.codeformas.edu.model.AccountPypesEntity;
-import com.codeformas.edu.model.AccountsEntity;
+import com.codeformas.edu.model.AccountTypesEntity;
 import com.codeformas.edu.repository.AccountPypesEntityRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +24,9 @@ public class AccountPypesEntityManager {
 		this.accountPypesEntityRepository = accountPypesEntityRepository;
 	}
 
-	public List<AccountPypesEntity> getAllAccountTypes(Optional<Integer> limitOpcional, Optional<Integer> offsetOpcional){
-		List<AccountPypesEntity> accountTypeList;
+	public List<AccountTypesEntity> getAllAccountTypes(Optional<Integer> limitOpcional, Optional<Integer> offsetOpcional){
+		List<AccountTypesEntity> accountTypeList;
+
 		Integer limit = limitOpcional.orElse(-1);
 		Integer offset = offsetOpcional.orElse(-1);
 
@@ -46,5 +46,27 @@ public class AccountPypesEntityManager {
 		}
 		return accountTypeList;
 	}
+
+	public AccountTypesEntity getAccountTypesEntityById(Integer idAccount){
+		Optional<AccountTypesEntity> accountTypesOptional = this.accountPypesEntityRepository.findById(idAccount);
+		if(accountTypesOptional.isPresent()){
+			return accountTypesOptional.get();
+		}
+		else{
+			throw new ApiException(new NotFoundException("Not Found"), HttpStatus.NOT_FOUND);
+		}
+	}
+
+	public AccountTypesEntity saveUpdateAccountTypesEntity(AccountTypesEntity accountTypesEntity){
+		try {
+			accountTypesEntity = this.accountPypesEntityRepository.save(accountTypesEntity);
+		}catch (Exception e){
+			e.printStackTrace();
+			throw new ApiException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return accountTypesEntity;
+	}
+
+
 
 }

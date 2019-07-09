@@ -22,6 +22,7 @@ public class CoursesEntity {
     private Collection<DetailCurseAccountsEntity> detailCurseAccountsByIdCourse;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course")
     public int getIdCourse() {
         return idCourse;

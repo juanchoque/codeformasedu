@@ -17,11 +17,12 @@ public class AccountsEntity {
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private byte state;
-    private int idAccountPype;
-    private AccountPypesEntity accountPypesByIdAccountPype;
+    private int idAccountType;
+    private AccountTypesEntity accountTypesByIdAccountType;
     private Collection<CourseAccountsEntity> courseAccountsByIdAccount;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_account")
     public int getIdAccount() {
         return idAccount;
@@ -122,13 +123,13 @@ public class AccountsEntity {
     }
 
     @Basic
-    @Column(name = "id_account_pype")
-    public int getIdAccountPype() {
-        return idAccountPype;
+    @Column(name = "id_account_type")
+    public int getIdAccountType() {
+        return idAccountType;
     }
 
-    public void setIdAccountPype(int idAccountPype) {
-        this.idAccountPype = idAccountPype;
+    public void setIdAccountType(int idAccountType) {
+        this.idAccountType = idAccountType;
     }
 
     @Override
@@ -140,7 +141,7 @@ public class AccountsEntity {
 
         if (idAccount != that.idAccount) return false;
         if (state != that.state) return false;
-        if (idAccountPype != that.idAccountPype) return false;
+        if (idAccountType != that.idAccountType) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
@@ -165,18 +166,18 @@ public class AccountsEntity {
         result = 31 * result + (dateCreate != null ? dateCreate.hashCode() : 0);
         result = 31 * result + (dateUpdate != null ? dateUpdate.hashCode() : 0);
         result = 31 * result + (int) state;
-        result = 31 * result + idAccountPype;
+        result = 31 * result + idAccountType;
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_account_pype", referencedColumnName = "id_account_pype", nullable = true, insertable = false, updatable = false)
-    public AccountPypesEntity getAccountPypesByIdAccountPype() {
-        return accountPypesByIdAccountPype;
+    @JoinColumn(name = "id_account_type", referencedColumnName = "id_account_type", nullable = true, insertable = false, updatable = false)
+    public AccountTypesEntity getAccountTypesByIdAccountType() {
+        return accountTypesByIdAccountType;
     }
 
-    public void setAccountPypesByIdAccountPype(AccountPypesEntity accountPypesByIdAccountPype) {
-        this.accountPypesByIdAccountPype = accountPypesByIdAccountPype;
+    public void setAccountTypesByIdAccountType(AccountTypesEntity accountTypesByIdAccountType) {
+        this.accountTypesByIdAccountType = accountTypesByIdAccountType;
     }
 
     @OneToMany(mappedBy = "accountsByIdAccount")

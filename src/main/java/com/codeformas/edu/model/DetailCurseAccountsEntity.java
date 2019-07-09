@@ -18,6 +18,7 @@ public class DetailCurseAccountsEntity {
     private CoursesEntity coursesByCoursesIdCourse;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detail_curse_account")
     public int getIdDetailCurseAccount() {
         return idDetailCurseAccount;

@@ -1,25 +1,29 @@
 package com.codeformas.edu.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "account_pypes", schema = "codeformasdb", catalog = "")
-public class AccountPypesEntity {
-    private int idAccountPype;
+@Table(name = "account_types", schema = "codeformasdb", catalog = "")
+public class AccountTypesEntity {
+    private int idAccountType = 2;
     private String name;
     private Integer code;
     private Byte state;
-    private Collection<AccountsEntity> accountsByIdAccountPype;
+
+    @ApiModelProperty(required = false, hidden = true)
+    private Collection<AccountsEntity> accountsByIdAccountType;
 
     @Id
-    @Column(name = "id_account_pype")
-    public int getIdAccountPype() {
-        return idAccountPype;
+    @Column(name = "id_account_type", updatable = false, nullable = false)
+    public int getIdAccountType() {
+        return idAccountType;
     }
 
-    public void setIdAccountPype(int idAccountPype) {
-        this.idAccountPype = idAccountPype;
+    public void setIdAccountType(int idAccountType) {
+        this.idAccountType = idAccountType;
     }
 
     @Basic
@@ -57,9 +61,9 @@ public class AccountPypesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AccountPypesEntity that = (AccountPypesEntity) o;
+        AccountTypesEntity that = (AccountTypesEntity) o;
 
-        if (idAccountPype != that.idAccountPype) return false;
+        if (idAccountType != that.idAccountType) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (code != null ? !code.equals(that.code) : that.code != null) return false;
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
@@ -69,19 +73,19 @@ public class AccountPypesEntity {
 
     @Override
     public int hashCode() {
-        int result = idAccountPype;
+        int result = idAccountType;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "accountPypesByIdAccountPype")
-    public Collection<AccountsEntity> getAccountsByIdAccountPype() {
-        return accountsByIdAccountPype;
+    @OneToMany(mappedBy = "accountTypesByIdAccountType", cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+    public Collection<AccountsEntity> getAccountsByIdAccountType() {
+        return accountsByIdAccountType;
     }
 
-    public void setAccountsByIdAccountPype(Collection<AccountsEntity> accountsByIdAccountPype) {
-        this.accountsByIdAccountPype = accountsByIdAccountPype;
+    public void setAccountsByIdAccountType(Collection<AccountsEntity> accountsByIdAccountType) {
+        this.accountsByIdAccountType = accountsByIdAccountType;
     }
 }

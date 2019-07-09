@@ -18,6 +18,7 @@ public class CourseAccountsEntity {
     private Collection<WayPaysEntity> wayPaysByIdCourseAccount;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course_account")
     public int getIdCourseAccount() {
         return idCourseAccount;

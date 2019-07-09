@@ -12,6 +12,7 @@ public class CourseTypesEntity {
     private Collection<CoursesEntity> coursesByIdCourseType;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course_type")
     public int getIdCourseType() {
         return idCourseType;
