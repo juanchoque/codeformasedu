@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: true
+    #hibernate:
+    #  ddl-auto: create-drop
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/codeformasedu
+    username: root
+    password: 120683
+    # driverClassName: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver

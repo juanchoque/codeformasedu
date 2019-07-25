@@ -119,11 +119,11 @@
 				<version>1.1.8</version>
 				<configuration>
 					<entity-package>
-						<param>com.codeformas.edu.model</param>
+						<param>com.codeformas.edu.v1.model</param>
 					</entity-package>
-					<repository-package>com.codeformas.edu.repository</repository-package>
+					<repository-package>com.codeformas.edu.v1.repository</repository-package>
 					<repository-postfix>Repository</repository-postfix>
-					<manager-package>com.codeformas.edu.managers</manager-package>
+					<manager-package>com.codeformas.edu.v1.managers</manager-package>
 					<manager-postfix>Manager</manager-postfix>
 					<only-annotations>false</only-annotations>
 					<overwrite>false</overwrite>
