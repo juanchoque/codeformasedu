@@ -54,8 +54,8 @@ public class AccountTypesEntityManagerTest {
 
     @Test
     public void getAllAccountTypes() {
-        List<AccountTypesEntity> listTest = new ArrayList();
-        when((Publisher<?>) accountPypesEntityRepository.findAll()).thenReturn(listTest);
+        //List<AccountTypesEntity> listTest = new ArrayList();
+        //when((Publisher<?>) accountPypesEntityRepository.findAll()).thenReturn(listTest);
         //System.out.println("////////////>" + accountPypesEntityRepository.findAll());
         //System.out.println(">>>>>>>>>>>>" + accountTypesEntityManager.getAllAccountTypes(Optional.ofNullable(null), Optional.ofNullable(null)));
 
